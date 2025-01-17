@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from salmonella.admin import SalmonellaMixin
 from django.shortcuts import render
@@ -17,14 +18,14 @@ class PatientAdmin(SalmonellaMixin, admin.ModelAdmin):
     list_filter = ('sports_school', 'sport', 'coaches', 'rank', 'team_member', )
     readonly_fields = ('unique_number', 'umo_comment', 'emo_comment',)
     fieldsets = (
-        ('Общая информация', ({'fields': (
+        (u'Общая информация', ({'fields': (
             'unique_number', 'full_name', 'sex', 'birthday', 'address', 'phone_no',
         ),
         }),),
-        ('Спортивная информация', ({'fields': (
+        (u'Спортивная информация', ({'fields': (
             'sports_school', 'sport', 'coaches', 'rank', 'training_from_year', 'training_stage', 'team_member'
         )}),),
-        ('Допуски', ({'fields': (
+        (u'Допуски', ({'fields': (
             ('umo', 'umo_comment'), 'umo_number', 'umo_limit', 'recommendations',
             ('emo', 'emo_comment'), 'emo_number', 'emo_limit',
         )}),),
@@ -37,7 +38,7 @@ class PatientAdmin(SalmonellaMixin, admin.ModelAdmin):
 
     def birthday_short(self, obj):
         return obj.birthday.strftime('%d.%m.%Y') if obj.birthday else None
-    birthday_short.short_description = 'Д/Р'
+    birthday_short.short_description = u'Д/Р'
     birthday_short.admin_order_field = 'birthday'
 
     def emo_display(self, obj):
@@ -45,17 +46,17 @@ class PatientAdmin(SalmonellaMixin, admin.ModelAdmin):
         data = '<strong>%s</strong><br>%s' % (emo_date_str, obj.emo_limit or '')
         return data
 
-    emo_display.short_description = 'ЭМО'
+    emo_display.short_description = u'ЭМО'
     emo_display.admin_order_field = 'emo'
     emo_display.allow_tags = True
 
     def umo_display(self, obj):
         umo_date_str = obj.umo.strftime('%d.%m.%Y') if obj.umo else ''
-        umo_limit = obj.umo_limit or 'не указан'
-        data = '<strong>%s</strong><br>Допуск: %s' % (umo_date_str, umo_limit)
+        umo_limit = obj.umo_limit or u'не указан'
+        data = u'<strong>%s</strong><br>Допуск: %s' % (umo_date_str, umo_limit)
         return data
 
-    umo_display.short_description = 'УМО'
+    umo_display.short_description = u'УМО'
     umo_display.admin_order_field = 'umo'
     umo_display.allow_tags = True
 

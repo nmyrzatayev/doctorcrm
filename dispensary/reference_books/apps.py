@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
 
 class ReferenceBooksConfig(AppConfig):
     name = 'dispensary.reference_books'
-    verbose_name = _('Справочники')
+    verbose_name = _(u'Справочники')
 
 
 default_app_config = '{module}.{app}'.format(

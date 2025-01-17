@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import csv
 from datetime import datetime
 from django.core.management import BaseCommand

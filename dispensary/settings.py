@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SECRET_KEY = 'your-very-secret-key'
 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-domain.com']
 
 INSTALLED_APPS = [
     'grappelli',
@@ -18,7 +21,8 @@ INSTALLED_APPS = [
     'dispensary.reference_books',
     'dispensary.sports_schools',
 ]
-
+LANGUAGE_CODE = 'ru-ru'  # or 'en-us' if you're using English
+DEFAULT_CHARSET = 'utf-8'
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -66,6 +70,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'legacy_db',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST': 'db',
+        'PORT': '3306',
+    }
+}
 
 LANGUAGE_CODE = 'ru-Ru'
 
@@ -77,9 +91,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+DEBUG=True
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'dispensary/static'),
+]
+print(STATICFILES_DIRS)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+GRAPPELLI_ADMIN_TITLE = u'Кировский спортивный диспансер'
 
-GRAPPELLI_ADMIN_TITLE = 'Кировский спортивный диспансер'
 
-from .local_settings import *

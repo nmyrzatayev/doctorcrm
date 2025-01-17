@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
 
 class SportsSchoolsConfig(AppConfig):
     name = 'dispensary.sports_schools'
-    verbose_name = _('Спортивные школы')
+    verbose_name = _(u'Спортивные школы')
 
 
 default_app_config = '{module}.{app}'.format(

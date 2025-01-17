@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
 import django.contrib.staticfiles.urls
 
 
-admin.site.site_title = 'Кировский спортивный диспансер'
-admin.site.site_header = 'Кировский спортивный диспансер'
+admin.site.site_title = u'Кировский спортивный диспансер'
+admin.site.site_header = u'Кировский спортивный диспансер'
 
 
 urlpatterns = [
